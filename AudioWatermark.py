@@ -396,20 +396,6 @@ def main():
         page_icon="🎵",
         layout="wide"
     )
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-image: url("https://i.guim.co.uk/img/media/02088fb2247b13df646907d47f552dc69a236bc7/0_93_3235_3304/master/3235.jpg?width=445&dpr=1&s=none&crop=none");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
     #Main header
     st.title("🎵 FFT Audio Watermarking Tool")
     st.markdown("**Text embedding and extraction using frequency domain manipulation**")
