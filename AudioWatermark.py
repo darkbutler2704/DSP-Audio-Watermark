@@ -447,7 +447,7 @@ def main():
                 help="Enter text to embed (keep it short for better accuracy and DONT USE SPECIAL CHARACTERS)",
                 placeholder="e.g., Thristian"
             )
-                        # Auto-Suggest Parameter Section
+            # Auto-Suggest Parameter Section
             if watermark_text:
                 msg_len = len(watermark_text)
 
@@ -679,13 +679,16 @@ def main():
                 
                 # Show frequency analysis
                 if st.button("Show Extraction Analysis"):
-                    st.subheader("Frequency Analysis")
-                    plot_frequency_spectrum(audio_data, sample_rate, "Watermarked Audio Spectrum")
-                    
                     st.subheader("Binary Analysis")
                     if 'embedding_params' in st.session_state:
                         original_binary = text_to_binary(st.session_state['embedding_params']['text'])
                         plot_binary_comparison(original_binary, extracted_binary)
+
+                        match_count = sum(o == e for o, e in zip(original_binary, extracted_binary))
+                        total = min(len(original_binary), len(extracted_binary))
+                        bit_accuracy = (match_count / total) * 100 if total > 0 else 0
+                        st.metric("Bit Accuracy", f"{bit_accuracy:.2f}%")
+                    
                     else:
                         st.info("Upload original embedding parameters to compare binary data")
                 
