@@ -420,8 +420,7 @@ def main():
         - Higher frequencies are less noticeable
                         
         **If Error:**
-        - If it says "operands could not be broadcast together with shapes"      
-        - Convert first the audio to mono if stereo
+        - If it says "operands could not be broadcast together with shapes", convert first the audio to mono if stereo
 
         **For Extracting:**
         - Use the parameters that is used for embedding watermark
