@@ -421,7 +421,11 @@ def main():
                         
         **If Error:**
         - If it says "operands could not be broadcast together with shapes"      
-        - Convert first the audio to mono if stereo                     
+        - Convert first the audio to mono if stereo
+
+        **For Extracting:**
+        - Use the parameters that is used for embedding
+        - Adjust the embedding strength a little to get the accurate watermark 
     """)
 
     mode = st.selectbox("Select Operation Mode:", ["Embed Watermark", "Extract Watermark"])
