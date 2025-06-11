@@ -403,9 +403,9 @@ def main():
 
     st.sidebar.header("⚙️ Watermarking Parameters")
     
-    freq_start = st.sidebar.slider("Start Frequency (Hz)", 1000, 8000, 2000, 250)
-    freq_width = st.sidebar.slider("Frequency Width (Hz)", 500, 4000, 1500, 250)
-    strength = st.sidebar.slider("Embedding Strength", 0.1, 1.0, 0.3, 0.05)
+    freq_start = st.sidebar.slider("Start Frequency (Hz)", 1000, 8000, st.session_state.get("freq_start", 2000), 250)
+    freq_width = st.sidebar.slider("Frequency Width (Hz)", 500, 4000, st.session_state.get("freq_width", 1500), 250)
+    strength = st.sidebar.slider("Embedding Strength", 0.1, 1.0, st.session_state.get("strength", 0.3), 0.05)
     
     st.sidebar.markdown("---")
     st.sidebar.markdown("""                
@@ -452,7 +452,53 @@ def main():
                 help="Enter text to embed (keep it short for better accuracy and DONT USE SPECIAL CHARACTERS)",
                 placeholder="e.g., Thristian"
             )
-        
+                        # Auto-Suggest Parameter Section
+            if watermark_text:
+                msg_len = len(watermark_text)
+
+                if msg_len <= 6:
+                    dynamic_freq_start = 2400
+                    dynamic_freq_width = 1200
+                    dynamic_strength = 0.3
+                    category = "Short"
+                elif msg_len == 7:
+                    dynamic_freq_start = 3400
+                    dynamic_freq_width = 1400
+                    dynamic_strength = 0.5
+                    category = "Short"
+                elif msg_len == 8:
+                    dynamic_freq_start = 2400
+                    dynamic_freq_width = 1200
+                    dynamic_strength = 0.3
+                    category = "Short"
+                elif msg_len <= 16:
+                    dynamic_freq_start = 3400
+                    dynamic_freq_width = 2000
+                    dynamic_strength = 0.45
+                    category = "Medium"
+                elif msg_len ==19:
+                    dynamic_freq_start = 4500
+                    dynamic_freq_width = 2400
+                    dynamic_strength = 0.55
+                    category = "Long"
+                elif msg_len == 20:
+                    dynamic_freq_start = 4200
+                    dynamic_freq_width = 2200
+                    dynamic_strength = 0.55
+                    category = "Long"
+                else:
+                    dynamic_freq_start = 4200
+                    dynamic_freq_width = 2500
+                    dynamic_strength = 0.50
+                    category = "Long"
+
+                st.markdown("### 📐 Auto-Suggested Parameters")
+                st.markdown(f"""
+                | **Category** | **Message Length** | **Start Frequency** | **Width** | **Strength** |
+                |--------------|--------------------|----------------------|-----------|--------------|
+                | {category}   | {msg_len} chars     | {dynamic_freq_start} Hz   | {dynamic_freq_width} Hz  | {dynamic_strength} |
+                """)
+                
         with col2:
             if watermark_text:
                 binary = text_to_binary(watermark_text)
