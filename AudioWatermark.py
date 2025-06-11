@@ -415,10 +415,16 @@ def main():
         - **Embedding Strength**: 0.3-0.7 for good balance
         
         **Tips:**
-        - Keep text under 5-10 characters for better accuracy
         - Dont use special characters and numbers
         - Use moderate strength for best results
         - Higher frequencies are less noticeable
+
+        **For Embedding**
+            | Message Length      | Start Frequency | Width        | Strength |
+            | ------------------- | --------------- | ------------ | -------- |
+            | Short (4–8 chars)   | 2000 Hz         | 1000–1500 Hz | 0.3      |
+            | Medium (8–16 chars) | 3000–4000 Hz    | 1500–2000 Hz | 0.4–0.5  |
+            | Long (16–32+ chars) | 5000+ Hz        | 2000–3000 Hz | 0.5–0.6  |
                         
         **If Error:**
         - If it says "operands could not be broadcast together with shapes", convert first the audio to mono if stereo
