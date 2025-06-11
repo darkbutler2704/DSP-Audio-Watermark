@@ -424,7 +424,7 @@ def main():
         - Convert first the audio to mono if stereo
 
         **For Extracting:**
-        - Use the parameters that is used for embedding
+        - Use the parameters that is used for embedding watermark
         - Adjust the embedding strength a little to get the accurate watermark 
     """)
 
