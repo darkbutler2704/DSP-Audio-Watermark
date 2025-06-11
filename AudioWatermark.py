@@ -416,6 +416,7 @@ def main():
         
         **Tips:**
         - Keep text under 5-10 characters for better accuracy
+        - Dont use special characters and numbers
         - Use moderate strength for best results
         - Higher frequencies are less noticeable
                         
