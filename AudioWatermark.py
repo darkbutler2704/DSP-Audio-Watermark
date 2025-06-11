@@ -499,6 +499,11 @@ def main():
                 | {category}   | {msg_len} chars     | {dynamic_freq_start} Hz   | {dynamic_freq_width} Hz  | {dynamic_strength} |
                 """)
                 
+                if st.button("📌 Use Suggested Parameters"):
+                    st.session_state.freq_start = dynamic_freq_start
+                    st.session_state.freq_width = dynamic_freq_width
+                    st.session_state.strength = dynamic_strength
+                    st.success("✅ Suggested parameters applied! Please check the sidebar sliders.")
         with col2:
             if watermark_text:
                 binary = text_to_binary(watermark_text)
