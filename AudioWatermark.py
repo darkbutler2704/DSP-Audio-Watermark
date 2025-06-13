@@ -472,9 +472,9 @@ def main():
                     dynamic_strength = 0.55
                     category = "Medium"
                 elif 17 <= msg_len <= 18:
-                    dynamic_freq_start = 4200
-                    dynamic_freq_width = 2500
-                    dynamic_strength = 0.55
+                    dynamic_freq_start = 4600
+                    dynamic_freq_width = 2600
+                    dynamic_strength = 0.6
                     category = "Long"
                 elif msg_len ==19:
                     dynamic_freq_start = 4500
